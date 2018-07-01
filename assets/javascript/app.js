@@ -17,23 +17,13 @@ var data = [
   }
 ];
 
-var questions;
-var userChoice = []; //array containing user's choices
-var timerTracker = 0;
-
-//create a correct answers array
-function correctAnswersArr(dataObj) {
-  var correctAnswers = []; //array container correct answers
-
-  for (var i in dataObj) {
-    correctAnswers.push(dataObj[i].correctAnswer);
-  }
-
-  return correctAnswers;
-}
+var correctCounter = 0,
+  wrongCounter = 0,
+  unanswerCounter = 0,
+  questions;
 
 function timer() {
-  var sec = 5;
+  var sec = 120;
   var timer = setInterval(function() {
     document.getElementById('timer').innerHTML = sec;
     sec--;
@@ -73,7 +63,7 @@ function createQuestionEle(quiz) {
 
     //display answers
     var answerList = createAnswersList(quiz[index].answers, index);
-    questionAnswersEle.append(answerList);
+    questionsEle.append(answerList);
   }
 
   return questionAnswersEle;
@@ -81,12 +71,9 @@ function createQuestionEle(quiz) {
 
 //display result when time ran out
 function displayResult() {
-  var correctCounter = 0;
-  var wrongCounter = 0;
-  var unanswerCounter = 0;
-
   var questionNumber = 1; //Start with question number 1
-  while (questionNumber <= data.length) { //Run this up to questionNumber 10
+  while (questionNumber <= data.length) {
+    //Run this up to questionNumber 10
     var correctChoice = data[questionNumber - 1].correctAnswer; //Get correct answer
     //find all radios within a question (should have 4 radios)
     var radioInputs = $(`input[name="question-${questionNumber}"]`);
@@ -135,4 +122,3 @@ $('#start').on('click', function() {
 
   $('#done').on('click', displayResult);
 });
-
