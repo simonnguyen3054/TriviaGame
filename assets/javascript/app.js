@@ -76,13 +76,13 @@ function timer() {
 
 function createAnswersList(answersArray, questionIndex) {
   //display answers
-  var answerList = $('<ul>');
+  var answerList = $('<ul>').addClass('list-group');
   var item;
   var input = '';
 
   for (var answerItem in answersArray) {
     var choice = answersArray[answerItem];
-    item = $('<li>');
+    item = $('<li>').addClass('list-group-item');
     input = `<input type="radio" name="question-${parseInt(questionIndex) +
       1}" value="${choice}">`;
     input += choice;
@@ -98,7 +98,7 @@ function createQuestionEle(quiz) {
 
   for (var index in quiz) {
     //display questions
-    var questionsEle = $('<div>').text(quiz[index].question);
+    var questionsEle = $('<div>').text(quiz[index].question).addClass('header');
     questionAnswersEle.append(questionsEle);
 
     //display answers
@@ -140,9 +140,6 @@ function displayResult() {
   }
 
   showScoreBoard(correctCounter, wrongCounter, unanswerCounter);
-  console.log(correctCounter);
-  console.log(wrongCounter);
-  console.log(unanswerCounter);
 }
 
 //score board to dislay when time ran out or user clicks done
@@ -154,11 +151,13 @@ function showScoreBoard(correct, wrong, blank) {
   //remove done button by adding class hide
   $('#done').remove();
 
+  var jumpbotron = $('<div>').addClass('jumbotron');
   var correctAnswers = $('<div>').text(`Correct: ${correct}`); //Show correctCounter
   var wrongAnswers = $('<div>').text(`Incorrect: ${wrong}`); //Show wrongCounter
   var blankAnswers = $('<div>').text(`Unanswered: ${blank}`); //Show unanswerCounter
 
-  $('h1').append(correctAnswers, wrongAnswers, blankAnswers)
+  jumpbotron.append(correctAnswers, wrongAnswers, blankAnswers);
+  $('h1').append(jumpbotron);
 
 }
 //When Start button is clicked, display all questions

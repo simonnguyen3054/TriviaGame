@@ -8,6 +8,7 @@ body {
 
 ul {
   list-style-type: none;
+  margin-top: 5px;
 }
 
 .hide {
@@ -35,4 +36,32 @@ h1 {
   cursor: pointer;
   font-family: "Jua", sans-serif;
   color: chocolate
+}
+
+ul li {
+  color: black;
+}
+
+ul li input {
+  margin-right: 10px;
+}
+
+.header {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+#done {
+  margin-bottom: 30px;
+  font-size: 200%;
+  padding: 5px 30px;;
+  cursor: pointer;
+  font-family: "Jua", sans-serif;
+  color: chocolate
+}
+
+.jumbotron {
+  margin-top: 10px;
+  color: black;
+  text-align: center;
 }
