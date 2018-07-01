@@ -11,7 +11,47 @@ var data = [
     correctAnswer: '36'
   },
   {
-    question: 'How many teams are in the 2018 World Cup Tourament',
+    question: 'Which soccer play got paid the most?',
+    answers: ['Bale', 'Ronaldo', 'Messi', 'Neymar'],
+    correctAnswer: 'Messi'
+  },
+  {
+    question: 'Name the country team that won the World Cup 2014',
+    answers: ['France', 'Brazil', 'Germany', 'England'],
+    correctAnswer: 'Germany'
+  },
+  {
+    question: 'How many yellow cards can each soccer player get in a match?',
+    answers: [1, 2, 3, 4],
+    correctAnswer: '2'
+  },
+  {
+    question: 'Each team gets up to __ substitutes in a match.',
+    answers: [1, 2, 3, 4],
+    correctAnswer: '3'
+  },
+  {
+    question: 'Which body part is not allowed to touch the soccer ball beside the goalie?',
+    answers: ['head', 'hand', 'arm', 'shoulder'],
+    correctAnswer: 'hand'
+  },
+  {
+    question: 'Which team won the most World Cup?',
+    answers: ['Germany', 'France', 'Brazil', 'Argentina'],
+    correctAnswer: 'Brazil'
+  },
+  {
+    question: 'Which country team does the soccer legend Pele played for?',
+    answers: ['Germany', 'France', 'Brazil', 'Argentina'],
+    correctAnswer: 'Brazil'
+  },
+  {
+    question: 'Which soccer stadium holds the most seats?',
+    answers: ['Rungrado May Day Stadium', 'Camp Nou', 'FNB Stadium', 'Rose Bowl Stadium'],
+    correctAnswer: 'Brazil'
+  },
+  {
+    question: 'Who\'s the best soccer player in the world today?',
     answers: ['Bale', 'Ronaldo', 'Messi', 'Neymar'],
     correctAnswer: 'Messi'
   }
@@ -99,18 +139,38 @@ function displayResult() {
     questionNumber++;
   }
 
+  showScoreBoard(correctCounter, wrongCounter, unanswerCounter);
   console.log(correctCounter);
   console.log(wrongCounter);
   console.log(unanswerCounter);
 }
 
+//score board to dislay when time ran out or user clicks done
+function showScoreBoard(correct, wrong, blank) {
+  //remove timer by adding class hide
+  $('h2').remove();
+  //remove questions by adding class hide
+  questions.remove();
+  //remove done button by adding class hide
+  $('#done').remove();
+
+  var correctAnswers = $('<div>').text(`Correct: ${correct}`); //Show correctCounter
+  var wrongAnswers = $('<div>').text(`Incorrect: ${wrong}`); //Show wrongCounter
+  var blankAnswers = $('<div>').text(`Unanswered: ${blank}`); //Show unanswerCounter
+
+  $('h1').append(correctAnswers, wrongAnswers, blankAnswers)
+
+}
 //When Start button is clicked, display all questions
 $('#start').on('click', function() {
   //start timer. When timer hit 0, displayResult function will run
   timer();
 
   questions = $('#questions');
+  $('h1').css({ "margin-top": "50px",
+              "margin-bottom": "10px"});
   questions.removeClass(); //remove the class 'hide' to show the questions
+  $('h2').removeClass(); //remove class 'hide' to show the timer
   $(this).remove(); //remove the start button
 
   var DoneButton = $('<button id="done">Done</button>'); //Add Done button

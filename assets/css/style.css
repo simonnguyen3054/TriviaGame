@@ -1,3 +1,38 @@
+body {
+  background-image: url("../images/what-the-hex-dark.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: aliceblue;
+}
+
 ul {
   list-style-type: none;
+}
+
+.hide {
+  display: none;
+}
+
+#container {
+  display: flex; /* or inline-flex */
+  flex-direction: column;
+  align-items: center;
+
+}
+
+h1 {
+  font-size: 300%;
+  color: white;
+  font-family: "Jua", sans-serif;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+#start {
+  font-size: 200%;
+  padding: 5px 30px;;
+  cursor: pointer;
+  font-family: "Jua", sans-serif;
+  color: chocolate
 }
